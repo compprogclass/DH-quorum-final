@@ -1,0 +1,41 @@
+use Libraries.Compute.Math
+
+Math math
+
+text star = "*"
+integer line = 0
+number amp = 0
+number freq = 0
+number y_shift = 10
+number wave_val = (y_shift + (amp * math:Cosine(1 * freq)))
+
+output "Welcome to the Wave Generator!"
+
+text AMP = input ("Input amplitude")
+amp = cast (number, AMP)
+
+text FREQ = input ("Input frequency")
+freq = cast (number, FREQ)
+
+text LINE = input ("Input number of lines")
+line = cast (integer, LINE)
+
+number i = 0
+
+repeat line times
+    i = i + 1
+    wave_val = (y_shift + (amp * math:Cosine(i * freq)))
+    text stars = ""
+    repeat cast (integer, wave_val) times
+        stars = star + stars
+    end
+    output stars
+end
+
+
+
+
+
+
+
+
