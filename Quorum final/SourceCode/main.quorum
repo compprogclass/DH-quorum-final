@@ -1,28 +1,25 @@
 use Libraries.Game.Game
 use Libraries.Interface.Events.KeyboardEvent
 use Libraries.Game.InputMonitor
-use Libraries.Game.Graphics.Color
-use Libraries.Game.Graphics.Drawable 
+ 
 
 class Main is Game
-Drawable cube
-InputMonitor im
-KeyboardEvent key
-Color color
+Model cube
+Inputmonitor im
+KeyboardEvent keys
+
 
     action Main
         StartGame()
     end
 
     action CreateGame
-        cube:LoadFilledRectangle(100,100,color:Red())
-        cube:SetPosition (400,300)
-        Add(cube)
+        circle:Loadfilledrectangle(100,1,color:red()
+        circle:SetPosition (400,300)
     end
 
     action Update(number seconds)
         if im:IsKeyPressed(key:LEFT)
-            cube:MoveX(-2)
+            circle:MoveX(2)
         end
     end
-end
