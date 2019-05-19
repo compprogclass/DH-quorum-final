@@ -1,25 +1,66 @@
+
+use Libraries.Game.InputMonitor
 use Libraries.Game.Game
 use Libraries.Interface.Events.KeyboardEvent
 use Libraries.Game.InputMonitor
- 
+ use Libraries.Game.Graphics.Drawable
+use Libraries.Game.Graphics.Color
 
 class Main is Game
-Model cube
-Inputmonitor im
+//Model cube
+InputMonitor im
 KeyboardEvent keys
-
+Drawable circle
+Color color
 
     action Main
         StartGame()
     end
 
     action CreateGame
-        circle:Loadfilledrectangle(100,1,color:red()
-        circle:SetPosition (400,300)
+//circle:LoadFilledCircle(10,1, color:Blue())
+circle:LoadFilledCircle(50)
+        circle:SetPosition(200,200)
+Add(circle)
     end
 
-    action Update(number seconds)
-        if im:IsKeyPressed(key:LEFT)
-            circle:MoveX(2)
+    action Update(number secconds)
+        if im:IsKeyPressed(keys:LEFT)
+            circle:MoveX(-2)
         end
+if im:IsKeyPressed(keys:RIGHT)
+    circle:MoveX(2)
+end
+if im:IsKeyPressed(keys:UP)
+    circle:MoveY(2)
+end
+if im:IsKeyPressed(keys:DOWN)
+    circle:MoveY(-2)
+end
+
+if im:IsKeyPressed(keys:X)
+    Exit()
+end
+
+        if circle:GetX()>GetScreenWidth()
+            circle:MoveX(-3)
+            circle:SetColor(color:Pink())
+        end
+        
+        if circle:GetY() > GetScreenHeight()
+            circle:MoveY(3-3)
+            circle:SetColor(color:Red())
+        end
+
+        if circle:GetX()<GetScreenWidth()
+            circle:MoveX(3)
+            circle:SetColor(color:Purple())
+        end
+        
+        if circle:GetY() < GetScreenHeight()
+            circle:MoveY(3)
+            circle:SetColor(color:Blue())
+        end
+
     end
+end
