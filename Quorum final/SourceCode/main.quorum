@@ -9,6 +9,7 @@ use Libraries.Game.Graphics.Color
 class Main is Game
 //Model cube
 InputMonitor im
+Drawable screen
 KeyboardEvent keys
 Drawable circle
 Color color
@@ -19,43 +20,45 @@ Color color
 
     action CreateGame
 //circle:LoadFilledCircle(10,1, color:Blue())
-circle:LoadFilledCircle(50)
-        circle:SetPosition(200,200)
-Add(circle)
+    screen:LoadFilledRectangle(1000,1000, color:Black())
+    circle:LoadFilledCircle(200)
+            circle:SetPosition(50,50)
+    Add(circle)
+    Add(screen)
     end
 
     action Update(number secconds)
-        if im:IsKeyPressed(keys:LEFT)
-            circle:MoveX(-2)
+            if im:IsKeyPressed(keys:LEFT)
+                    circle:MoveX(-2)
         end
-if im:IsKeyPressed(keys:RIGHT)
-    circle:MoveX(2)
-end
-if im:IsKeyPressed(keys:UP)
-    circle:MoveY(2)
-end
-if im:IsKeyPressed(keys:DOWN)
-    circle:MoveY(-2)
-end
+    if im:IsKeyPressed(keys:RIGHT)
+            circle:MoveX(2)
+end 
+    if im:IsKeyPressed(keys:UP)
+            circle:MoveY(2)
+    end
+    if im:IsKeyPressed(keys:DOWN)
+            circle:MoveY(-2)
+    end
 
-if im:IsKeyPressed(keys:X)
-    Exit()
-end
+    if im:IsKeyPressed(keys:X)
+            Exit()
+    end
 
-        if circle:GetX()>GetScreenWidth()
-            circle:MoveX(-3)
-            circle:SetColor(color:Pink())
-        end
+            if circle:GetX()>GetScreenWidth()
+                    circle:MoveX(-3)
+                    circle:SetColor(color:Yellow())
+            end
         
-        if circle:GetY() > GetScreenHeight()
-            circle:MoveY(3-3)
-            circle:SetColor(color:Red())
-        end
+            if circle:GetY() > GetScreenHeight()
+                    circle:MoveY(3-3)
+                    circle:SetColor(color:White())
+            end
 
-        if circle:GetX()<GetScreenWidth()
-            circle:MoveX(3)
-            circle:SetColor(color:Purple())
-        end
+            if circle:GetX()<GetScreenWidth()
+                    circle:MoveX(3)
+                    circle:SetColor(color:Green())
+            end
         
         if circle:GetY() < GetScreenHeight()
             circle:MoveY(3)
